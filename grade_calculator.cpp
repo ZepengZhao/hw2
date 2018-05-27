@@ -106,8 +106,7 @@ grade_calculator::~grade_calculator()
 
 
 void grade_calculator::update_overall(){
-    // double score = 31.4;
-   // double score = static_cast<double>(unused);
+
     QString hw1 = ui->spinbox1->text();
     QString hw2 = ui->spinbox2->text();
     QString hw3 = ui->spinbox3->text();
