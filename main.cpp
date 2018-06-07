@@ -15,5 +15,5 @@ int main(int argc, char *argv[])
 
     w1.show();
 
-    return app.exec();   // <-- This part handles `signals` and `events`.
+    return app.exec();
 }

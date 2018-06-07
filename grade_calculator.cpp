@@ -17,9 +17,8 @@ grade_calculator::grade_calculator(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     this->setWindowTitle("Grade Calculator");
-    //this->resize(1000,1000);
+
     QObject::connect(ui->spinbox1, SIGNAL(  valueChanged(int) ),
                      ui->slider1, SLOT(setValue(int) ) );
     QObject::connect(ui->slider1, SIGNAL(  valueChanged(int) ),
