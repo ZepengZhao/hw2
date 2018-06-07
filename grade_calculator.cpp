@@ -10,6 +10,7 @@
 #include<QMainWindow>
 #include<QDebug>
 #include<QIcon>
+
 grade_calculator::grade_calculator(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::grade_calculator)
@@ -24,11 +25,6 @@ grade_calculator::grade_calculator(QWidget *parent) :
     QObject::connect(ui->slider1, SIGNAL(  valueChanged(int) ),
                      ui->spinbox1, SLOT(setValue(int) ) );
 
-    QHBoxLayout* layout = new QHBoxLayout();
-    layout->addWidget(ui->hw1);
-    layout->addWidget(ui->spinbox1);
-    layout->addWidget(ui->slider1);
-    this->setLayout(layout);
 
 
     QObject::connect(ui->spinbox2, SIGNAL(  valueChanged(int) ),
