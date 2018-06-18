@@ -20,7 +20,7 @@ class grade_calculator : public QMainWindow
 
    public:
         explicit grade_calculator(QWidget *parent = 0);
-      //  ~grade_calculator();
+        ~grade_calculator();
 
 public slots:
         void update_overall();

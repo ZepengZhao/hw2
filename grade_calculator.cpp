@@ -19,7 +19,7 @@ grade_calculator::grade_calculator(QWidget *parent) :
 
     this->setWindowTitle("Grade Calculator");
 
-    QObject::connect(ui->spinbox1, SIGNAL(  valueChanged(int) ),
+   QObject::connect(ui->spinbox1, SIGNAL(  valueChanged(int) ),
                      ui->slider1, SLOT(setValue(int) ) );
     QObject::connect(ui->slider1, SIGNAL(  valueChanged(int) ),
                      ui->spinbox1, SLOT(setValue(int) ) );
@@ -81,24 +81,37 @@ grade_calculator::grade_calculator(QWidget *parent) :
     QObject::connect(ui->slider_f ,SIGNAL(  valueChanged(int) ),
                      ui->spinbox_f, SLOT(setValue(int) ) );
 
+    ui->spinbox1->setRange(0,10);
+    ui->spinbox2->setRange(0,10);
+    ui->spinbox3->setRange(0,10);
+    ui->spinbox4->setRange(0,10);
+    ui->spinbox5->setRange(0,10);
+    ui->spinbox6->setRange(0,10);
+    ui->spinbox7->setRange(0,10);
+    ui->spinbox8->setRange(0,10);
+    ui->slider1->setRange(0,10);
+    ui->slider2->setRange(0,10);
+    ui->slider3->setRange(0,10);
+    ui->slider4->setRange(0,10);
+    ui->slider5->setRange(0,10);
+    ui->slider6->setRange(0,10);
+    ui->slider7->setRange(0,10);
+    ui->slider8->setRange(0,10);
+
+    ui->spinbox_m1->setRange(0,100);
+    ui->spinbox_m2->setRange(0,100);
+    ui->spinbox_f->setRange(0,100);
+
+    ui->slider_m1->setRange(0,100);
+    ui->slider_m2->setRange(0,100);
+    ui->slider_f->setRange(0,100);
 
     connect(ui->choose,SIGNAL(activated(int)),this,SLOT(clickedaction(int)));
-    qDebug("aaa");
-
+    connect(ui->choose,SIGNAL(activated(int)),this,SLOT(on_clear_clicked()));
      ui->choose->insertItem(0, "Pic 10A:Introduction to Programming");
      ui->choose->insertItem(1, "Pic 10B:Intermediate Programming");
      ui->choose->insertItem(2, "Pic 10C:Advanced Programming");
 }
-
-
-
-/*
-grade_calculator::~grade_calculator()
-{
-    delete ui;
-}
-*/
-
 
 void grade_calculator::update_overall(){
 
@@ -141,14 +154,14 @@ void grade_calculator::update_overall(){
     double final_score=0;
     if(schemaA == true)
     {
-       final_score=(h1+h2+h3+h4+h5+h6+h7+h8)*0.25 +(m1+m2)*0.2+f*0.35;
+       final_score=(h1+h2+h3+h4+h5+h6+h7+h8)*0.25/0.8 +(m1+m2)*0.2+f*0.35;
     }
     if(schemaA == false)
     {
        if(m1 >m2)
-       final_score=(h1+h2+h3+h4+h5+h6+h7+h8)*0.25 +m1*0.3+f*0.44;
+       final_score=(h1+h2+h3+h4+h5+h6+h7+h8)*0.25/0.8 +m1*0.3+f*0.44;
        else
-           final_score=(h1+h2+h3+h4+h5+h6+h7+h8)*0.25 +m2*0.3+f*0.44;
+           final_score=(h1+h2+h3+h4+h5+h6+h7+h8)*0.25/0.8 +m2*0.3+f*0.44;
     }
     ui->final_score->setText(QString::number(final_score));
     return;
@@ -167,7 +180,7 @@ void grade_calculator::on_schemaB_clicked()
     update_overall();
 }
 
-void grade_calculator::on_clear_clicked() //Clear All button
+void grade_calculator::on_clear_clicked() 
 {
     ui->spinbox1->setValue(0);
     ui->spinbox2->setValue(0);
